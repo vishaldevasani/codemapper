@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Dark theme (default) ── */
+:root {
+  --bg: #0d1117;
+  --bg2: #010409;
+  --panel: #161b22;
+  --panel2: #1c2128;
+  --border: #30363d;
+  --border2: #21262d;
+  --accent: #58a6ff;
+  --accent-hover: #79c0ff;
+  --accent-subtle: rgba(88,166,255,0.12);
+  --text-primary: #e6edf3;
+  --text-secondary: #8b949e;
+  --text-muted: #484f58;
+  --success: #3fb950;
+  --warning: #d29920;
+  --danger: #f85149;
+  --shadow: 0 4px 24px rgba(0,0,0,0.5);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
+  --radius: 8px;
+  --radius-sm: 5px;
+}
+
+/* ── Light theme ── */
+:root.light {
+  --bg: #f6f8fa;
+  --bg2: #ffffff;
+  --panel: #ffffff;
+  --panel2: #f6f8fa;
+  --border: #d0d7de;
+  --border2: #e4e8ec;
+  --accent: #0969da;
+  --accent-hover: #0550ae;
+  --accent-subtle: rgba(9,105,218,0.08);
+  --text-primary: #1f2328;
+  --text-secondary: #636c76;
+  --text-muted: #9aa0a9;
+  --success: #1a7f37;
+  --warning: #9a6700;
+  --danger: #cf222e;
+  --shadow: 0 4px 24px rgba(0,0,0,0.10);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, sans-serif;
+  transition: background 0.2s, color 0.2s;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-secondary); }
+
+/* ── Tooltip ── */
+.graph-tooltip {
+  position: fixed;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--text-primary);
+  pointer-events: none;
+  z-index: 9999;
+  box-shadow: var(--shadow);
+  transition: opacity 0.12s;
+  max-width: 260px;
+}
+
+/* ── Animations ── */
+@keyframes slideInRight {
+  from { transform: translateX(20px); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.35; }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.panel-enter { animation: slideInRight 0.2s ease forwards; }
+.fade-in-up  { animation: fadeInUp 0.3s ease forwards; }
+.skeleton    { animation: pulse 1.6s ease-in-out infinite; background: var(--border); border-radius: 4px; }
+.spin        { animation: spin 0.75s linear infinite; }
+
+/* ── Tab underline indicator ── */
+.tab-active {
+  border-bottom: 2px solid var(--accent);
+  color: var(--accent) !important;
+}
+
+/* ── Smooth theme transition on panels ── */
+.panel-transition {
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
