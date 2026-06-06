@@ -88,7 +88,7 @@
 ### 1. Clone
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/codemapper.git
+git clone https://github.com/vishaldevasani/codemapper.git
 cd codemapper
 ```
 
